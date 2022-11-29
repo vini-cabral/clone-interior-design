@@ -1,0 +1,153 @@
+@use '../../styles/settings/sass/_variables' as var
+
+$transition-duration: 350ms
+.menu
+  *
+    color: var.$color-light
+  position: relative
+  position: fixed
+  left: 0
+  top: 0
+  width: 0
+  height: 100vh
+  >header
+    position: fixed
+    width: 100%
+    height: var.$topbar-mob-height
+    background-color: var.$color-01
+    display: flex
+    align-items: center
+    justify-content: center
+    box-sizing: border-box
+    padding: var.$gutter
+    z-index: 1
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75)
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75)
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75)
+    span
+      position: relative
+      display: flex
+      align-items: center
+      font-size: 2.5rem
+      width: 60px
+      margin-right: -60px
+      z-index: 1
+      vertical-align: middle
+      color: var.$color-light
+      cursor: pointer
+      >*
+        position: absolute
+        transition-duration: calc(2.5*$transition-duration)
+        transition-property: transform, opacity
+    .btn-menu
+      >:nth-child(2)
+        opacity: 0
+        transform: rotate(460deg)
+    .btn-arrow
+      >:nth-child(1)
+        opacity: 0
+        transform: rotate(-460deg)
+    strong
+      width: 100%
+      text-align: center
+      position: relative
+      color: var.$color-light
+      font-weight: 500
+      font-size: 2.5rem
+      vertical-align: middle
+  >nav
+    position: relative
+    width: 100%
+    height: 100%
+    background-color: transparent
+    box-sizing: border-box
+    padding-top: var.$topbar-mob-height
+    >ul
+      position: relative
+      top: 0
+      left: calc(-1.1*var.$menu-width)
+      overflow: hidden
+      box-sizing: border-box
+      padding: var.$gutter 0
+      display: flex
+      flex-direction: column
+      background-color: var.$color-01
+      height: 100%
+      max-width: var.$menu-width
+      overflow: auto
+      >li
+        cursor: pointer
+        box-sizing: border-box
+        padding: calc(.5*var.$offset) var.$gutter
+      >li:hover
+        background-color: var.$color-02
+        color: var.$color-dark
+        transition-duration: $transition-duration
+        transition-property: background, color
+      >li:active
+        color: var.$color-light
+
+.action--open
+  width: 100%
+  >nav
+    background-color: rgba(0, 0, 0, .8)
+    >ul
+      left: 0
+
+.transition--open
+  >nav
+    transition-duration: $transition-duration
+    transition-property: background
+    >ul
+      transition-duration: $transition-duration
+      transition-property: left
+
+.transition--close
+  transition-duration: $transition-duration
+  transition-delay: calc(1.5*$transition-duration)
+  transition-property: width
+  >nav
+    transition-duration: $transition-duration
+    transition-property: background
+    >ul
+      transition-duration: $transition-duration
+      transition-property: left
+
+@media(min-width: var.$bkpt-desk)
+  .menu
+    $height-logo: 200px
+    width: var.$menu-width
+    background-color: var.$color-01
+    display: flex
+    align-items: center
+    justify-content: space-between
+    flex-direction: column
+    overflow: auto
+    box-sizing: border-box
+    padding-bottom: $height-logo
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75)
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75)
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75)
+    >header
+      position: relative
+      height: $height-logo
+      width: 100%
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+      background-color: transparent
+      span
+        display: none
+      strong
+        text-align: left
+    >nav
+      padding: 0
+      height: auto
+      margin: auto
+      >ul
+        left: 0
+        height: auto
+        background-color: transparent
+  .action--open
+    >nav
+      background-color: transparent
