@@ -4,12 +4,13 @@ $transition-duration: 350ms
 .menu
   *
     color: var.$color-light
-  position: relative
+    font-weight: 700
   position: fixed
   left: 0
   top: 0
   width: 0
   height: 100vh
+  z-index: 10
   >header
     position: fixed
     width: 100%
@@ -52,7 +53,6 @@ $transition-duration: 350ms
       text-align: center
       position: relative
       color: var.$color-light
-      font-weight: 500
       font-size: 2.5rem
       vertical-align: middle
   >nav

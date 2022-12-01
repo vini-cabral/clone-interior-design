@@ -1,0 +1,33 @@
+@use '../../styles/settings/sass/_variables' as var
+
+.showcase
+  padding-top: var.$gutter
+  display: grid
+  gap: calc(1.5*var.$offset)
+  .card-img-1, .card-img-2
+    position: relative
+    display: flex
+    overflow: hidden
+    background-color: black
+    >img
+      position: absolute
+      opacity: .4
+      transition-duration: var.$transition-duration
+      transition-property: opacity, transform
+      cursor: pointer
+      object-fit: cover
+    >img:hover
+      opacity: 1
+      transform: scale(1.1)
+  .card-img-1::before, .card-img-2::before
+    content: ""
+    display: flex
+    position: relative
+    width: 100%
+    padding-bottom: 60%
+  .card-img-2::before
+    padding-bottom: 45%
+
+@media(min-width: var.$bkpt-md)
+  .showcase
+    grid-template-columns: 1fr 1fr

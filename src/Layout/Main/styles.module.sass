@@ -1,0 +1,12 @@
+@use '../../styles/settings/sass/_variables' as var
+
+.main
+  position: relative
+  z-index: 0
+  box-sizing: border-box
+  min-height: 780px
+
+@media(min-width: var.$bkpt-desk)
+  .main
+    padding: var.$gutter
+    padding-left: calc(var.$gutter + var.$menu-width)

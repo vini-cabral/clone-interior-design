@@ -34,8 +34,12 @@ export default function Menu() {
     </header>
     <nav>
       <ul>
-        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Item 1</li>
-        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Item 1</li>
+        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Home</li>
+        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Showcase</li>
+        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Serviços</li>
+        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Designers</li>
+        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Pacotes</li>
+        <li onClick={ () => handleCssStyleName(false, setIsClosed, setCssStyleName) }>Contato</li>
       </ul>
     </nav>
   </div>
