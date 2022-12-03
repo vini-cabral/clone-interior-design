@@ -73,7 +73,6 @@ export default function Slider({
 }:{
   children: JSX.Element | JSX.Element[], height?:string, index?:number, btnArrow?:boolean, btnCaption?:boolean, autoSliding?:boolean, time?:number
 }) {
-
   if(!Array.isArray(children)) {
     renderSlide = children
   } else if(children.length == 1) {

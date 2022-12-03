@@ -55,6 +55,7 @@ $transition-duration: 350ms
       color: var.$color-light
       font-size: 2.5rem
       vertical-align: middle
+      cursor: pointer
   >nav
     position: relative
     width: 100%
@@ -79,12 +80,12 @@ $transition-duration: 350ms
         cursor: pointer
         box-sizing: border-box
         padding: calc(.5*var.$offset) var.$gutter
-      >li:hover
+      >li:hover, >li:hover *
         background-color: var.$color-02
         color: var.$color-dark
         transition-duration: $transition-duration
         transition-property: background, color
-      >li:active
+      >li:active, >li:active *
         color: var.$color-light
 
 .action--open

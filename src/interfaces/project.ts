@@ -1,6 +1,6 @@
 import IImage from "./image"
 
-export default interface IShowcase {
+export default interface IProject {
   id: string
   createdAt: string
   title: string

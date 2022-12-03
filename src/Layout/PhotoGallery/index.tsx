@@ -13,10 +13,10 @@ export default function PhotoGallery() {
       <IoCloseOutline />
     </span>
     {
-      ctxAssetsPhotoGallery && <Slider index={ ctxIndexClickPhotoGallery } btnArrow height='100%'>
+      ctxAssetsPhotoGallery && <Slider index={ ctxIndexClickPhotoGallery } btnArrow height='100%' time={20}>
         {
           ctxAssetsPhotoGallery.map(el => <div key={ el.id } className={ styles['slide'] }>
-            <Image src={ el.large.src } alt={ el.large.alt } fill priority />
+            <Image src={ el.large.src } alt={ el.large.alt } sizes="auto, auto" fill priority />
           </div>) 
         }
       </Slider>

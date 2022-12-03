@@ -4,18 +4,20 @@ import { useState } from 'react'
 import '../styles/settings/css/reset.css'
 import '../styles/globals.sass'
 import Layout from '../Layout'
-import AppContex from '../context/AppContex'
-import { IShowcase } from '../interfaces'
+import AppContex, { initHomeLinks } from '../context/AppContex'
+import { IProject } from '../interfaces'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery] = useState(-1)
-  const [ctxAssetsPhotoGallery, setCtxAssetsPhotoGallery] = useState<IShowcase[] | null>(null)
+  const [ctxAssetsPhotoGallery, setCtxAssetsPhotoGallery] = useState<IProject[] | null>(null)
+  const [ctxHomeLinks, setCtxHomeLinks] = useState(initHomeLinks)
   return <AppContex.Provider value={
     {
       ctxIndexClickPhotoGallery,
       setCtxIndexClickPhotoGallery,
       ctxAssetsPhotoGallery,
-      setCtxAssetsPhotoGallery
+      setCtxAssetsPhotoGallery,
+      ctxHomeLinks, setCtxHomeLinks
     }
   }>
     <Layout>

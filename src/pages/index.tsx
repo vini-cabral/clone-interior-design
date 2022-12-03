@@ -1,26 +1,37 @@
 import Head from 'next/head'
 import { createClient } from 'next-sanity'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 // My App
 import { config, urlFor } from '../lib/sanity'
-import { Section } from '../components'
-import { Showcase, Title } from '../partials'
-import { IShowcase } from '../interfaces'
-// Mock
-import { mockShowcase } from '../mock'
+import { Title, ShowcaseCore, ServicesCore, DesignersCore, PackagesCore, ContactCore } from '../partials'
+import { IProject, ITeammate } from '../interfaces'
+import AppContex from '../context/AppContex'
+import { utilHandleScroll } from '../utils'
 
 // Sanity Data Fetching
 const client = createClient(config)
 export async function getStaticProps() {
   try {
     let error: Error | null = null
-    let sanityShowcase: IShowcase[] = []
-  
+    let sanityShowcase: IProject[] = []
+    let sanityServicesDesc: any | null = null
+    let sanityDesignersDesc: any | null = null
+    let sanityTeam: ITeammate[] = []
+    let sanityPackagesDesc: any | null = null
+    let sanityContactDesc: any | null = null
+
     await Promise.all([
       client.fetch(`*[_type == "showcase"] | order(_createdAt asc)`),
+      client.fetch(`*[_type == "services"][0]`),
+      client.fetch(`*[_type == "designers"][0]`),
+      client.fetch(`*[_type == "teammate"] | order(_createdAt asc)`),
+      client.fetch(`*[_type == "package"][0]`),
+      client.fetch(`*[_type == "contact"][0]`),
     ])
-    .then(([dataHeroCarousel]) => {
-      // Hero's Carousel
-      sanityShowcase = dataHeroCarousel.map((el: any) => {
+    .then(([dataShowcase, dataServices, dataDesigners, dataTeam, dataPackagesDesc, dataContactDesc]) => {
+      // Showcae
+      sanityShowcase = dataShowcase.map((el: any) => {
         return {
           createdAt: el._createdAt,
           id: el._id,
@@ -35,26 +46,107 @@ export async function getStaticProps() {
           }
         }
       })
+      // Services
+      sanityServicesDesc = dataServices
+      // Designers
+      sanityDesignersDesc = dataDesigners
+      // Team
+      sanityTeam = dataTeam.map((el: any) => {
+        return {
+          createdAt: el._createdAt,
+          id: el._id,
+          name: el.name,
+          position: el.position,
+          description: el.description,
+          image: {
+            src: urlFor(el.image).url(),
+            alt: el.image.caption
+          }
+        }
+      })
+      // Packages
+      sanityPackagesDesc = dataPackagesDesc
+      // Contact
+      sanityContactDesc = dataContactDesc
     })
     .catch(err => error = err)
 
     if(
       error !== null
       || sanityShowcase.length == 0
+      || sanityServicesDesc === null
+      || sanityDesignersDesc === null
+      || sanityTeam.length == 0
+      || sanityPackagesDesc === null
+      || sanityContactDesc === null
     ) {
       return { notFound: true }
     }
     return {
       props: {
         sanityShowcase,
+        sanityServicesDesc,
+        sanityDesignersDesc,
+        sanityTeam,
+        sanityPackagesDesc,
+        sanityContactDesc
       },
+      revalidate: 10800, // 3h
     }
   } catch(err) {
     return { notFound: true }
   }
 }
 
-export default function Home({ sanityShowcase }:{ sanityShowcase: IShowcase[] }) {
+let auxElementHeight = 0
+let auxValueCalc = 0
+export default function Home({ 
+  sanityShowcase, sanityServicesDesc, sanityDesignersDesc, sanityTeam, sanityPackagesDesc, sanityContactDesc
+}:{
+  sanityShowcase: IProject[],
+  sanityServicesDesc: any | null,
+  sanityDesignersDesc: any | null,
+  sanityTeam: ITeammate[],
+  sanityPackagesDesc: any | null,
+  sanityContactDesc: any | null
+}) {
+  const objRef1 = useRef<HTMLInputElement>(null)
+  const objRef2 = useRef<HTMLInputElement>(null)
+  const objRef3 = useRef<HTMLInputElement>(null)
+  const objRef4 = useRef<HTMLInputElement>(null)
+  const objRef5 = useRef<HTMLInputElement>(null)
+  const objRef6 = useRef<HTMLInputElement>(null)
+  const refList = [objRef1, objRef2, objRef3, objRef4, objRef5, objRef6]
+  const { ctxHomeLinks, setCtxHomeLinks } = useContext(AppContex)
+  const router = useRouter()
+  const [isRead, setIsRead] = useState(false)
+
+  useEffect(() => {
+    auxElementHeight = 0
+    auxValueCalc = 0
+    Object.values(ctxHomeLinks).filter((el, i) => {
+      auxElementHeight = refList[i].current!.getBoundingClientRect().height
+      if(!isRead && router.asPath == '/') {
+        setIsRead(true)
+      }
+      if(!isRead && router.asPath == el.href && typeof auxElementHeight == 'number') {
+        setIsRead(true)
+        utilHandleScroll(auxValueCalc, false)
+        el.click = true
+        setCtxHomeLinks({ ...ctxHomeLinks })
+      }
+      if(isRead && el.click && typeof auxElementHeight == 'number') {
+        utilHandleScroll(auxValueCalc)
+        el.click = false
+        setCtxHomeLinks({ ...ctxHomeLinks })
+      }
+      if(typeof auxElementHeight == 'number') {
+        auxValueCalc += auxElementHeight
+      }
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.asPath, ctxHomeLinks])
+
   return (
     <>
       <Head>
@@ -62,10 +154,24 @@ export default function Home({ sanityShowcase }:{ sanityShowcase: IShowcase[] })
         <meta name="description" content="Generated by create next app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Title />
-      <Section>
-        <Showcase showcase={ sanityShowcase } />
-      </Section>
+      <div ref={ objRef1 }>
+        <Title />
+      </div>
+      <section ref={ objRef2 }>
+        <ShowcaseCore showcase={ sanityShowcase } />
+      </section>
+      <section  ref={ objRef3 }>
+        <ServicesCore servicesDesc={ sanityServicesDesc } />
+      </section>
+      <section ref={ objRef4 }>
+        <DesignersCore designersDesc={ sanityDesignersDesc } team={ sanityTeam } />
+      </section>
+      <section ref={ objRef5 }>
+        <PackagesCore packagesDesc={ sanityPackagesDesc } />
+      </section>
+      <section ref={ objRef6 }>
+        <ContactCore contactDesc={ sanityContactDesc } />
+      </section>
     </>
   )
 }

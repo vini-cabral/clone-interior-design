@@ -1,4 +1,8 @@
 import Title from "./Title"
-import Showcase from "./Showcase"
+import ShowcaseCore from "./ShowcaseCore"
+import ServicesCore from "./ServicesCore"
+import DesignersCore from "./DesignersCore"
+import PackagesCore from "./PackagesCore"
+import ContactCore from "./ContactCore"
 
-export { Title, Showcase }
+export { Title, ShowcaseCore, ServicesCore, DesignersCore, PackagesCore, ContactCore }

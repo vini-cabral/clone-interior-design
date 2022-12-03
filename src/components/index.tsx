@@ -1,5 +1,4 @@
-import Section from "./Section"
-import SectionTitle from "./sectionTitle"
+import SectionTitle from "./SectionTitle"
 import Slider from "./Slider"
 
-export { Section, SectionTitle, Slider }
+export { SectionTitle, Slider }
