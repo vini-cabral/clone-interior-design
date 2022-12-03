@@ -23,6 +23,7 @@ export default function ShowcaseCore({ showcase }:{ showcase: IProject[] | null 
           key={ el.id }
           onClick={ () => setCtxIndexClickPhotoGallery(i) }
         >
+          <h3>{ el.title }</h3>
           <Image src={ el.thumbnail.src } alt={ el.thumbnail.alt } sizes="auto, auto" fill priority />
         </div>)
       }

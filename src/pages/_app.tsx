@@ -3,7 +3,7 @@ import { useState } from 'react'
 // My App
 import '../styles/settings/css/reset.css'
 import '../styles/globals.sass'
-import Layout from '../Layout'
+import Layout from '../layout'
 import AppContex, { initHomeLinks } from '../context/AppContex'
 import { IProject } from '../interfaces'
 

@@ -13,9 +13,7 @@ export default function Layout({ children }:{ children: JSX.Element | JSX.Elemen
     <div className={ ctxIndexClickPhotoGallery < 0 ? styles['content'] : `${styles['content']} ${styles['action--test']}` }>
       <Menu />
       <Main>{ children }</Main>
-      <Footer>
-        <p>Footer</p>
-      </Footer>
+      <Footer />
     </div>
   </>
 }

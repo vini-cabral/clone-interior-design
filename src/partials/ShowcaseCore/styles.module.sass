@@ -5,13 +5,23 @@
   display: grid
   gap: calc(1.5*var.$offset)
   .card-img-1, .card-img-2
+    width: 100%
     position: relative
     display: flex
+    align-items: center
+    justify-content: center
     overflow: hidden
     background-color: black
+    h3
+      position: absolute
+      width: 100%
+      text-align: center
+      color: var.$color-light
+      font-size: 3rem
+      font-weight: 400
     >img
       position: absolute
-      opacity: .4
+      opacity: .3
       transition-duration: var.$transition-duration
       transition-property: opacity, transform
       cursor: pointer
@@ -24,9 +34,9 @@
     display: flex
     position: relative
     width: 100%
-    padding-bottom: 60%
+    padding-bottom: 80%
   .card-img-2::before
-    padding-bottom: 45%
+    padding-bottom: 55%
 
 @media(min-width: var.$bkpt-md)
   .showcase
