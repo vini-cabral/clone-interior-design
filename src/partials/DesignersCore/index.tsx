@@ -2,9 +2,9 @@ import {PortableText} from '@portabletext/react'
 import Image from 'next/image'
 import { useContext } from 'react'
 // My App
-import { SectionTitle } from "../../components"
-import AppContex from '../../context/AppContex'
-import { ITeammate } from '../../interfaces'
+import { SectionTitle } from 'src/components'
+import AppContex from 'src/context/AppContex'
+import { ITeammate } from 'src/interfaces'
 import styles from './styles.module.sass'
 
 export default function DesignersCore({ designersDesc, team }:{ designersDesc: any, team: ITeammate[] | null }) {

@@ -1,10 +1,7 @@
 import styles from './styles.module.sass'
-import Menu from "./Menu"
-import Main from './Main'
-import Footer from './Footer'
-import PhotoGallery from './PhotoGallery'
+import { Footer, Main, Menu, PhotoGallery } from './partials'
 import { useContext } from 'react'
-import AppContex from '../context/AppContex'
+import AppContex from 'src/context/AppContex'
 
 export default function Layout({ children }:{ children: JSX.Element | JSX.Element[] }) {
   const { ctxIndexClickPhotoGallery } = useContext(AppContex)

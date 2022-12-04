@@ -1,7 +1,7 @@
 import { useContext } from "react"
 // My App
-import { SectionTitle } from "../../components"
-import AppContex from "../../context/AppContex"
+import { SectionTitle } from "src/components"
+import AppContex from "src/context/AppContex"
 
 export default function PackagesCore({ packagesDesc }: {  packagesDesc: any }) {
   const { ctxHomeLinks } = useContext(AppContex)

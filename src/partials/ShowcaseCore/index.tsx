@@ -1,10 +1,10 @@
 import Image from "next/image"
 import { useContext, useEffect } from "react"
 // My App
-import { SectionTitle } from "../../components"
-import AppContex from "../../context/AppContex"
-import { IProject } from "../../interfaces"
-import styles from './styles.module.sass'
+import { SectionTitle } from "src/components"
+import AppContex from "src/context/AppContex"
+import { IProject } from "src/interfaces"
+import styles from "./styles.module.sass"
 
 export default function ShowcaseCore({ showcase }:{ showcase: IProject[] | null }) {
   const { ctxHomeLinks, ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, setCtxAssetsPhotoGallery } = useContext(AppContex)

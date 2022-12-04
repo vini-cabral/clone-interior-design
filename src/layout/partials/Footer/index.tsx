@@ -7,7 +7,7 @@ import {
   ENV_PUBLIC_REPO_AUTHOR_URL,
   ENV_PUBLIC_REPO_DESC,
   ENV_PUBLIC_REPO_URL
-} from '../../env'
+} from 'src/env'
 import styles from './styles.module.sass'
 
 export default function Footer() {

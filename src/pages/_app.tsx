@@ -1,11 +1,11 @@
 import type { AppProps } from 'next/app'
 import { useState } from 'react'
 // My App
-import '../styles/settings/css/reset.css'
-import '../styles/globals.sass'
-import Layout from '../layout'
-import AppContex, { initHomeLinks } from '../context/AppContex'
-import { IProject } from '../interfaces'
+import 'src/styles/settings/css/reset.css'
+import 'src/styles/globals.sass'
+import Layout from 'src/layout'
+import AppContex, { initHomeLinks } from 'src/context/AppContex'
+import { IProject } from 'src/interfaces'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery] = useState(-1)

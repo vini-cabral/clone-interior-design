@@ -1,6 +1,6 @@
-import { createContext, useRef } from "react"
+import { createContext } from "react"
 // My App
-import { IAppContex } from "../interfaces"
+import { IAppContex } from "src/interfaces"
 
 export const initHomeLinks = {
   home: {

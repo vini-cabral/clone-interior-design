@@ -3,11 +3,11 @@ import { createClient } from 'next-sanity'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 // My App
-import { config, urlFor } from '../lib/sanity'
-import { Title, ShowcaseCore, ServicesCore, DesignersCore, PackagesCore, ContactCore } from '../partials'
-import { IProject, ITeammate } from '../interfaces'
-import AppContex from '../context/AppContex'
-import { utilHandleScroll } from '../utils'
+import { config, urlFor } from 'src/lib/sanity'
+import { Title, ShowcaseCore, ServicesCore, DesignersCore, PackagesCore, ContactCore } from 'src/partials'
+import { IProject, ITeammate } from 'src/interfaces'
+import AppContex from 'src/context/AppContex'
+import { utilHandleScroll } from 'src/utils'
 
 // Sanity Data Fetching
 const client = createClient(config)

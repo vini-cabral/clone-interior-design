@@ -3,8 +3,8 @@ import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { IoMenuSharp, IoArrowBackSharp } from "react-icons/io5"
 // My App
-import AppContex from "../../context/AppContex"
-import styles from './styles.module.sass'
+import AppContex from "src/context/AppContex"
+import styles from "./styles.module.sass"
 
 function handleCssStyleName(isClosed:boolean, setIsClosed: Function, setCssStyleName: Function, time = 500) {
   if(isClosed) {

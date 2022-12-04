@@ -1,4 +1,4 @@
-import { ENV_SANITY_AUTH_TOKEN, ENV_PUBLIC_NEXT_SANITY_PROJECT_ID } from "../env"
+import { ENV_SANITY_AUTH_TOKEN, ENV_PUBLIC_NEXT_SANITY_PROJECT_ID } from "src/env"
 
 const config = {
   projectId: ENV_PUBLIC_NEXT_SANITY_PROJECT_ID,
