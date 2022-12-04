@@ -3,7 +3,7 @@ import { useState } from 'react'
 // My App
 import 'src/styles/settings/css/reset.css'
 import 'src/styles/globals.sass'
-import Layout from 'src/layout'
+import Layout, { LayoutError } from 'src/layout'
 import AppContex, { initHomeLinks } from 'src/context/AppContex'
 import { IProject } from 'src/interfaces'
 import { TLayout } from 'src/types'
@@ -24,8 +24,15 @@ export default function App({ Component, pageProps }: AppProps) {
       ctxLayout, setCtxLayout
     }
   }>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    {
+      ctxLayout === 'std' && <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    }
+    { 
+      ctxLayout === 'error' && <LayoutError>
+        <Component {...pageProps} />
+      </LayoutError>
+    }
   </AppContex.Provider>
 }

@@ -117,9 +117,14 @@ export default function Home({
   const objRef5 = useRef<HTMLInputElement>(null)
   const objRef6 = useRef<HTMLInputElement>(null)
   const refList = [objRef1, objRef2, objRef3, objRef4, objRef5, objRef6]
-  const { ctxHomeLinks, setCtxHomeLinks } = useContext(AppContex)
+  const { ctxHomeLinks, setCtxHomeLinks, setCtxLayout } = useContext(AppContex)
   const router = useRouter()
   const [isRead, setIsRead] = useState(false)
+
+  useEffect(() => {
+    setCtxLayout('std')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     auxElementHeight = 0

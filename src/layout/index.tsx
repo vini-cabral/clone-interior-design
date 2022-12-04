@@ -2,8 +2,9 @@ import styles from './styles.module.sass'
 import { Footer, Main, Menu, PhotoGallery } from './partials'
 import { useContext } from 'react'
 import AppContex from 'src/context/AppContex'
+import LayoutError from './LayoutError'
 
-export default function Layout({ children }:{ children: JSX.Element | JSX.Element[] }) {
+function Layout({ children }:{ children: JSX.Element | JSX.Element[] }) {
   const { ctxIndexClickPhotoGallery } = useContext(AppContex)
   return <>
     { ctxIndexClickPhotoGallery >= 0 && <PhotoGallery />}
@@ -14,3 +15,8 @@ export default function Layout({ children }:{ children: JSX.Element | JSX.Elemen
     </div>
   </>
 }
+
+export {
+  LayoutError
+}
+export default Layout
