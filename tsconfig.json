@@ -9,6 +9,7 @@
       "src/pages/*": ["pages/*"],
       "src/partials/*": ["partials/*"],
       "src/styles/*": ["styles/*"],
+      "src/types/*": ["types/*"],
       "src/utils/*": ["utils/*"],
     },
     "target": "es5",

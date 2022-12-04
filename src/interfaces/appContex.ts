@@ -1,10 +1,5 @@
+import { TLayout, TLink } from "src/types"
 import IShowcase from "./project"
-
-type TLink = {
-  name: string,
-  href: string,
-  click: boolean,
-}
 
 export default interface IAppContex {
   ctxIndexClickPhotoGallery: number
@@ -19,5 +14,7 @@ export default interface IAppContex {
     packages: TLink,
     contact: TLink,
   }
-  setCtxHomeLinks: Function
+  setCtxHomeLinks: Function,
+  ctxLayout: TLayout,
+  setCtxLayout: Function
 }

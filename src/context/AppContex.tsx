@@ -41,7 +41,9 @@ const AppContex = createContext<IAppContex>({
   ctxAssetsPhotoGallery: null,
   setCtxAssetsPhotoGallery: () => {},
   ctxHomeLinks: initHomeLinks,
-  setCtxHomeLinks: () => {}
+  setCtxHomeLinks: () => {},
+  ctxLayout: 'std',
+  setCtxLayout: () => {}
 })
 
 export default AppContex
