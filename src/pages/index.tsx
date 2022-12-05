@@ -8,7 +8,6 @@ import { Title, ShowcaseCore, ServicesCore, DesignersCore, PackagesCore, Contact
 import { IProject, ITeammate } from 'src/interfaces'
 import { AppContex } from 'src/context'
 import { utilHandleScroll } from 'src/utils'
-import { clientGetDataPackage } from 'src/services'
 
 // Sanity Data Fetching
 const client = createClient(sanityConfig)
@@ -124,9 +123,6 @@ export default function Home({
 
   useEffect(() => {
     setCtxLayout('std')
-    clientGetDataPackage()
-    .then(res => {
-    })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

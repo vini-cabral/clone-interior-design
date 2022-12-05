@@ -9,6 +9,7 @@ export default function handlerGetMenuChoices(
   if(req.method === 'GET') {
     res.status(200).json({
       basic: {
+        title: 'Básico',
         type: 'Projeto 2D',
         supportTime: 10,
         auxService: 'Fotografia',
@@ -16,7 +17,8 @@ export default function handlerGetMenuChoices(
         message: 'Bons negócios',
         price: 199.99,
       },
-      pro: {
+      premium: {
+        title: 'Premium',
         type: 'Projeto 3D',
         supportTime: 50,
         auxService: 'Fotografia',

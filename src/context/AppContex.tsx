@@ -37,20 +37,22 @@ export const initHomeLinks = {
 
 export const initDataPackages: IDataPackages = {
   basic: {
-    type: 'Projeto 2D',
-    supportTime: 0,
-    auxService: 'Description',
-    discount: 0,
-    message: 'Description',
-    price: 0,
+    title: null,
+    type: null,
+    supportTime: null,
+    auxService: null,
+    discount: null,
+    message: null,
+    price: null,
   },
-  pro: {
-    type: 'Projeto 3D',
-    supportTime: 0,
-    auxService: 'Description',
-    discount: 0,
-    message: 'Description',
-    price: 0,
+  premium: {
+    title: null,
+    type: null,
+    supportTime: null,
+    auxService: null,
+    discount: null,
+    message: null,
+    price: null,
   }
 }
 
