@@ -98,8 +98,7 @@ export async function getStaticProps() {
   }
 }
 
-let auxElementHeight = 0
-let auxValueCalc = 0
+let auxOffsetTop = 0
 export default function Home({ 
   sanityShowcase, sanityServicesDesc, sanityDesignersDesc, sanityTeam, sanityPackagesDesc, sanityContactDesc
 }:{
@@ -127,31 +126,37 @@ export default function Home({
   }, [])
 
   useEffect(() => {
-    auxElementHeight = 0
-    auxValueCalc = 0
+    if(isRead) {
+      return
+    }
+    if(!isRead && router.asPath == '/') {
+      setIsRead(true)
+    }
+    const idCounter = setTimeout(() => {
+      Object.values(ctxHomeLinks).filter((el, i) => {
+        auxOffsetTop = refList[i].current!.offsetTop
+        if(!isRead && router.asPath == el.href && typeof auxOffsetTop == 'number') {
+          setIsRead(true)
+          utilHandleScroll(auxOffsetTop, false)
+        }
+      })
+    }, 300)
+    return () => clearTimeout(idCounter)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.asPath])
+
+  useEffect(() => {
     Object.values(ctxHomeLinks).filter((el, i) => {
-      auxElementHeight = refList[i].current!.getBoundingClientRect().height
-      if(!isRead && router.asPath == '/') {
-        setIsRead(true)
-      }
-      if(!isRead && router.asPath == el.href && typeof auxElementHeight == 'number') {
-        setIsRead(true)
-        utilHandleScroll(auxValueCalc, false)
-        el.click = true
-        setCtxHomeLinks({ ...ctxHomeLinks })
-      }
-      if(isRead && el.click && typeof auxElementHeight == 'number') {
-        utilHandleScroll(auxValueCalc)
+      auxOffsetTop = refList[i].current!.offsetTop
+      if(isRead && el.click && typeof auxOffsetTop == 'number') {
         el.click = false
         setCtxHomeLinks({ ...ctxHomeLinks })
+        utilHandleScroll(auxOffsetTop)
         router.push(el.href)
-      }
-      if(typeof auxElementHeight == 'number') {
-        auxValueCalc += auxElementHeight
       }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.asPath, ctxHomeLinks])
+  }, [ctxHomeLinks])
 
   return <>
     <Head>
