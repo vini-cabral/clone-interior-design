@@ -1,9 +1,8 @@
-import Link from "next/link"
 import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { IoMenuSharp, IoArrowBackSharp } from "react-icons/io5"
 // My App
-import AppContex from "src/context/AppContex"
+import { AppContex } from "src/context"
 import styles from "./styles.module.sass"
 
 function handleCssStyleName(isClosed:boolean, setIsClosed: Function, setCssStyleName: Function, time = 500) {
@@ -45,9 +44,7 @@ export default function Menu() {
             setCtxHomeLinks({ ...ctxHomeLinks })
           } 
         }>
-          <Link href={ ctxHomeLinks.home.href }>
-            { ctxHomeLinks.home.name }
-          </Link>
+          { ctxHomeLinks.home.name }
         </li>
         <li onClick={ () => {
             handleCssStyleName(false, setIsClosed, setCssStyleName)
@@ -55,9 +52,7 @@ export default function Menu() {
             setCtxHomeLinks({ ...ctxHomeLinks })
           } 
         }>
-          <Link href={ ctxHomeLinks.showcase.href }>
-            { ctxHomeLinks.showcase.name }
-          </Link>
+          { ctxHomeLinks.showcase.name }
         </li>
         <li onClick={ () => {
             handleCssStyleName(false, setIsClosed, setCssStyleName)
@@ -65,9 +60,7 @@ export default function Menu() {
             setCtxHomeLinks({ ...ctxHomeLinks })
           } 
         }>
-          <Link href={ ctxHomeLinks.services.href }>
-            { ctxHomeLinks.services.name }
-          </Link>
+          { ctxHomeLinks.services.name }
         </li>
         <li onClick={ () => {
             handleCssStyleName(false, setIsClosed, setCssStyleName)
@@ -75,9 +68,7 @@ export default function Menu() {
             setCtxHomeLinks({ ...ctxHomeLinks })
           } 
         }>
-          <Link href={ ctxHomeLinks.designers.href }>
-            { ctxHomeLinks.designers.name }
-          </Link>
+          { ctxHomeLinks.designers.name }
         </li>
         <li onClick={ () => {
             handleCssStyleName(false, setIsClosed, setCssStyleName)
@@ -85,9 +76,7 @@ export default function Menu() {
             setCtxHomeLinks({ ...ctxHomeLinks })
           } 
         }>
-          <Link href={ ctxHomeLinks.packages.href }>
-            { ctxHomeLinks.packages.name }
-          </Link>
+          { ctxHomeLinks.packages.name }
         </li>
         <li onClick={ () => {
             handleCssStyleName(false, setIsClosed, setCssStyleName)
@@ -95,9 +84,7 @@ export default function Menu() {
             setCtxHomeLinks({ ...ctxHomeLinks })
           } 
         }>
-          <Link href={ ctxHomeLinks.contact.href }>
-            { ctxHomeLinks.contact.name }
-          </Link>
+          { ctxHomeLinks.contact.name }
         </li>
       </ul>
     </nav>

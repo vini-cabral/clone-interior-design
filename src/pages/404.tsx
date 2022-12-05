@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useContext } from "react"
 // My App
-import AppContex from "src/context/AppContex"
+import { AppContex } from "src/context"
 
 export default function Custom404() {
   const { setCtxLayout } = useContext(AppContex)

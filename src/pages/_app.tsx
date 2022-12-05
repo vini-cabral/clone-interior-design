@@ -4,7 +4,7 @@ import { useState } from 'react'
 import 'src/styles/settings/css/reset.css'
 import 'src/styles/globals.sass'
 import Layout, { LayoutError } from 'src/layout'
-import AppContex, { initHomeLinks } from 'src/context/AppContex'
+import { AppContex, initDataPackages, initHomeLinks } from 'src/context'
 import { IProject } from 'src/interfaces'
 import { TLayout } from 'src/types'
 
@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [ctxAssetsPhotoGallery, setCtxAssetsPhotoGallery] = useState<IProject[] | null>(null)
   const [ctxHomeLinks, setCtxHomeLinks] = useState(initHomeLinks)
   const [ctxLayout,setCtxLayout] = useState<TLayout>('std')
+  const [ctxDataPackages, setCtxDataPackages] = useState(initDataPackages)
 
   return <AppContex.Provider value={
     {
@@ -21,7 +22,8 @@ export default function App({ Component, pageProps }: AppProps) {
       ctxAssetsPhotoGallery,
       setCtxAssetsPhotoGallery,
       ctxHomeLinks, setCtxHomeLinks,
-      ctxLayout, setCtxLayout
+      ctxLayout, setCtxLayout,
+      ctxDataPackages, setCtxDataPackages
     }
   }>
     {

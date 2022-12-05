@@ -2,7 +2,7 @@ import Image from "next/image"
 import { useContext, useEffect } from "react"
 // My App
 import { SectionTitle } from "src/components"
-import AppContex from "src/context/AppContex"
+import { AppContex } from "src/context"
 import { IProject } from "src/interfaces"
 import styles from "./styles.module.sass"
 

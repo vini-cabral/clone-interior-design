@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useContext } from 'react'
 // My App
 import { SectionTitle } from 'src/components'
-import AppContex from 'src/context/AppContex'
+import { AppContex } from 'src/context'
 import { ITeammate } from 'src/interfaces'
 import styles from './styles.module.sass'
 

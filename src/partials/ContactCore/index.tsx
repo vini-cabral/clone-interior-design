@@ -1,7 +1,7 @@
 import { useContext } from "react"
 // My App
 import { SectionTitle } from "src/components"
-import AppContex from "src/context/AppContex"
+import { AppContex } from "src/context"
 
 export default function ContactCore({ contactDesc }: { contactDesc: any }) {
   const { ctxHomeLinks } = useContext(AppContex)

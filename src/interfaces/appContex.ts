@@ -1,4 +1,5 @@
 import { TLayout, TLink } from "src/types"
+import { IDataPackages } from "./dataPackage"
 import IShowcase from "./project"
 
 export default interface IAppContex {
@@ -16,5 +17,7 @@ export default interface IAppContex {
   }
   setCtxHomeLinks: Function,
   ctxLayout: TLayout,
-  setCtxLayout: Function
+  setCtxLayout: Function,
+  ctxDataPackages: IDataPackages
+  setCtxDataPackages: Function
 }

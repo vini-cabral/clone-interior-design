@@ -4,7 +4,7 @@ import { IoCloseOutline } from 'react-icons/io5'
 // My App
 import styles from './styles.module.sass'
 import { Slider } from 'src/components'
-import AppContex from '../../../context/AppContex'
+import { AppContex } from 'src/context'
 
 export default function PhotoGallery() {
   const { ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, ctxAssetsPhotoGallery } = useContext(AppContex)

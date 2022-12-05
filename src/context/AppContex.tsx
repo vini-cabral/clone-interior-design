@@ -1,6 +1,6 @@
 import { createContext } from "react"
 // My App
-import { IAppContex } from "src/interfaces"
+import { IAppContex, IDataPackages } from "src/interfaces"
 
 export const initHomeLinks = {
   home: {
@@ -35,7 +35,26 @@ export const initHomeLinks = {
   }
 }
 
-const AppContex = createContext<IAppContex>({
+export const initDataPackages: IDataPackages = {
+  basic: {
+    type: 'Projeto 2D',
+    supportTime: 0,
+    auxService: 'Description',
+    discount: 0,
+    message: 'Description',
+    price: 0,
+  },
+  pro: {
+    type: 'Projeto 3D',
+    supportTime: 0,
+    auxService: 'Description',
+    discount: 0,
+    message: 'Description',
+    price: 0,
+  }
+}
+
+export const AppContex = createContext<IAppContex>({
   ctxIndexClickPhotoGallery: -1,
   setCtxIndexClickPhotoGallery: () => {},
   ctxAssetsPhotoGallery: null,
@@ -43,7 +62,7 @@ const AppContex = createContext<IAppContex>({
   ctxHomeLinks: initHomeLinks,
   setCtxHomeLinks: () => {},
   ctxLayout: 'std',
-  setCtxLayout: () => {}
+  setCtxLayout: () => {},
+  ctxDataPackages: initDataPackages,
+  setCtxDataPackages: () => {},
 })
-
-export default AppContex
