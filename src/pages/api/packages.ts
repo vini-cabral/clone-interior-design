@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 // My Project
 import { IDataPackages } from 'src/interfaces'
 
-export default function handlerGetMenuChoices(
+export default function handlerPackages(
   req: NextApiRequest,
   res: NextApiResponse<IDataPackages>
   ) {
