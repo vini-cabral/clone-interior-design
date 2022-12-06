@@ -2,36 +2,36 @@ import { createContext } from "react"
 // My App
 import { IAppContex, IDataPackages } from "src/interfaces"
 
-export const initHomeLinks = {
+export const initAppRoutes = {
   home: {
     name: 'Home',
     href: '/#home',
-    click: false
+    click: false,
   },
   showcase: {
     name: 'Showcase',
     href: '/#showcase',
-    click: false
+    click: false,
   },
   services: {
     name: 'Serviços',
     href: '/#services',
-    click: false
+    click: false,
   },
   designers: {
     name: 'Designers',
     href: '/#designers',
-    click: false
+    click: false,
   },
   packages: {
     name: 'Pacotes',
     href: '/#packages',
-    click: false
+    click: false,
   },
   contact: {
     name: 'Contato',
     href: '/#contact',
-    click: false
+    click: false,
   }
 }
 
@@ -61,8 +61,8 @@ export const AppContex = createContext<IAppContex>({
   setCtxIndexClickPhotoGallery: () => {},
   ctxAssetsPhotoGallery: null,
   setCtxAssetsPhotoGallery: () => {},
-  ctxHomeLinks: initHomeLinks,
-  setCtxHomeLinks: () => {},
+  ctxAppRoutes: initAppRoutes,
+  setCtxAppRoutes: () => {},
   ctxLayout: 'std',
   setCtxLayout: () => {},
   ctxDataPackages: initDataPackages,

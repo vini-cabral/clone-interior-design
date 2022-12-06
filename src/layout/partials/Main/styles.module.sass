@@ -1,10 +1,13 @@
 @use '../../../styles/settings/sass/_variables' as var
+@use '../../../styles/settings/sass/_mixins' as mix
 
 .main
   position: relative
   z-index: 1
   box-sizing: border-box
   min-height: 768px
+  >*
+    @include mix.show-fade()
 
 @media(min-width: var.$bkpt-desk)
   .main

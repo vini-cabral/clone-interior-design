@@ -4,14 +4,14 @@ import { useState } from 'react'
 import 'src/styles/settings/css/reset.css'
 import 'src/styles/globals.sass'
 import Layout, { LayoutError } from 'src/layout'
-import { AppContex, initDataPackages, initHomeLinks } from 'src/context'
+import { AppContex, initDataPackages, initAppRoutes } from 'src/context'
 import { IProject } from 'src/interfaces'
 import { TLayout } from 'src/types'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery] = useState(-1)
   const [ctxAssetsPhotoGallery, setCtxAssetsPhotoGallery] = useState<IProject[] | null>(null)
-  const [ctxHomeLinks, setCtxHomeLinks] = useState(initHomeLinks)
+  const [ctxAppRoutes, setCtxAppRoutes] = useState(initAppRoutes)
   const [ctxLayout,setCtxLayout] = useState<TLayout>('std')
   const [ctxDataPackages, setCtxDataPackages] = useState(initDataPackages)
 
@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
       setCtxIndexClickPhotoGallery,
       ctxAssetsPhotoGallery,
       setCtxAssetsPhotoGallery,
-      ctxHomeLinks, setCtxHomeLinks,
+      ctxAppRoutes, setCtxAppRoutes,
       ctxLayout, setCtxLayout,
       ctxDataPackages, setCtxDataPackages
     }

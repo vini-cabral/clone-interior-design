@@ -1,7 +1,9 @@
 @use '../../../styles/settings/sass/_variables' as var
+@use '../../../styles/settings/sass/_mixins' as mix
 
 $transition-duration: 350ms
 .menu
+  @include mix.show-fade()
   *
     color: var.$color-light
     font-weight: 700

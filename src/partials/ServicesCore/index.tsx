@@ -5,9 +5,9 @@ import { SectionTitle } from 'src/components'
 import { AppContex } from 'src/context'
 
 export default function ServicesCore({ servicesDesc }:{ servicesDesc: any }) {
-  const { ctxHomeLinks } = useContext(AppContex)
+  const { ctxAppRoutes } = useContext(AppContex)
   return <>
-    <SectionTitle>{ `${ctxHomeLinks.services.name}.` }</SectionTitle>
+    <SectionTitle>{ `${ctxAppRoutes.services.name}.` }</SectionTitle>
     { servicesDesc &&  <PortableText value={ servicesDesc.body }/> }
   </>
 }

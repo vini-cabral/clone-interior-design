@@ -1,6 +1,8 @@
 @use '../../../styles/settings/sass/_variables' as var
+@use '../../../styles/settings/sass/_mixins' as mix
 
 .footer
+  @include mix.show-fade()
   position: relative
   z-index: 0
   box-sizing: border-box

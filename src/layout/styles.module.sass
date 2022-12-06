@@ -1,17 +1,5 @@
 @use '../styles/settings/sass/_variables' as var
 
-@keyframes hide 
-  from
-    opacity: 1
-  to
-    opacity: 0
-
-@keyframes show
-  from
-    opacity: 0
-  to
-    opacity: 1
-
 .content
   left: 0
   top: 0
@@ -20,12 +8,6 @@
   z-index: 0
   min-height: 100vh
   background-color: var.$color-light
-  >*
-    opacity: 0
-    animation-name: show
-    animation-delay: 500ms
-    animation-duration: 1750ms
-    animation-fill-mode: forwards
 
 .action--hide
   overflow: hidden

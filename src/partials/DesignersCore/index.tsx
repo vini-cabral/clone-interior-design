@@ -8,9 +8,9 @@ import { ITeammate } from 'src/interfaces'
 import styles from './styles.module.sass'
 
 export default function DesignersCore({ designersDesc, team }:{ designersDesc: any, team: ITeammate[] | null }) {
-  const { ctxHomeLinks } = useContext(AppContex)
+  const { ctxAppRoutes } = useContext(AppContex)
   return <>
-    <SectionTitle>{ `${ctxHomeLinks.designers.name}.` }</SectionTitle>
+    <SectionTitle>{ `${ctxAppRoutes.designers.name}.` }</SectionTitle>
     { designersDesc && <PortableText value={ designersDesc.body }/> }
     <div className={ styles['team'] }>
       {

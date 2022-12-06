@@ -3,6 +3,8 @@ import { useContext, useState } from "react"
 import { IoMenuSharp, IoArrowBackSharp } from "react-icons/io5"
 // My App
 import { AppContex } from "src/context"
+import { IAppRoutes } from "src/interfaces"
+import { TLink } from "src/types"
 import styles from "./styles.module.sass"
 
 function handleCssStyleName(isClosed:boolean, setIsClosed: Function, setCssStyleName: Function, time = 500) {
@@ -19,10 +21,20 @@ function handleCssStyleName(isClosed:boolean, setIsClosed: Function, setCssStyle
   }
 }
 
+interface IItem extends TLink {
+  key: string
+}
+
+let keyList: string[] = []
+let routeList: IItem[] = []
 export default function Menu() {
   const [isClosed, setIsClosed] = useState(true)
   const [cssStyleName, setCssStyleName] = useState(`${ styles['menu'] }`)
-  const { ctxHomeLinks, setCtxHomeLinks } = useContext(AppContex)
+  const { ctxAppRoutes, setCtxAppRoutes } = useContext(AppContex)
+  keyList = Object.keys(ctxAppRoutes)
+  routeList = Object.values(ctxAppRoutes).map((el, i) => { 
+    return { ... el, key: keyList[i] }
+  })
   const router = useRouter()
 
   return <div className={ cssStyleName }>
@@ -38,54 +50,19 @@ export default function Menu() {
     </header>
     <nav>
       <ul>
-        <li onClick={ () => {
-            handleCssStyleName(false, setIsClosed, setCssStyleName)
-            ctxHomeLinks.home.click = true
-            setCtxHomeLinks({ ...ctxHomeLinks })
-          } 
-        }>
-          { ctxHomeLinks.home.name }
-        </li>
-        <li onClick={ () => {
-            handleCssStyleName(false, setIsClosed, setCssStyleName)
-            ctxHomeLinks.showcase.click = true
-            setCtxHomeLinks({ ...ctxHomeLinks })
-          } 
-        }>
-          { ctxHomeLinks.showcase.name }
-        </li>
-        <li onClick={ () => {
-            handleCssStyleName(false, setIsClosed, setCssStyleName)
-            ctxHomeLinks.services.click = true
-            setCtxHomeLinks({ ...ctxHomeLinks })
-          } 
-        }>
-          { ctxHomeLinks.services.name }
-        </li>
-        <li onClick={ () => {
-            handleCssStyleName(false, setIsClosed, setCssStyleName)
-            ctxHomeLinks.designers.click = true
-            setCtxHomeLinks({ ...ctxHomeLinks })
-          } 
-        }>
-          { ctxHomeLinks.designers.name }
-        </li>
-        <li onClick={ () => {
-            handleCssStyleName(false, setIsClosed, setCssStyleName)
-            ctxHomeLinks.packages.click = true
-            setCtxHomeLinks({ ...ctxHomeLinks })
-          } 
-        }>
-          { ctxHomeLinks.packages.name }
-        </li>
-        <li onClick={ () => {
-            handleCssStyleName(false, setIsClosed, setCssStyleName)
-            ctxHomeLinks.contact.click = true
-            setCtxHomeLinks({ ...ctxHomeLinks })
-          } 
-        }>
-          { ctxHomeLinks.contact.name }
-        </li>
+        {
+          routeList.map(el => <li
+            key={ el.key }
+            onClick = { () => {
+              handleCssStyleName(false, setIsClosed, setCssStyleName)
+              ctxAppRoutes[el.key as keyof IAppRoutes].click = true
+              setCtxAppRoutes({ ...ctxAppRoutes })
+              router.push(el.href)
+            }}
+          >
+            { el.name }
+          </li>)
+        }
       </ul>
     </nav>
   </div>

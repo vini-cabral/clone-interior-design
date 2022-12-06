@@ -116,7 +116,7 @@ export default function Home({
   const objRef5 = useRef<HTMLInputElement>(null)
   const objRef6 = useRef<HTMLInputElement>(null)
   const refList = [objRef1, objRef2, objRef3, objRef4, objRef5, objRef6]
-  const { ctxHomeLinks, setCtxHomeLinks, setCtxLayout } = useContext(AppContex)
+  const { ctxAppRoutes, setCtxAppRoutes, setCtxLayout } = useContext(AppContex)
   const router = useRouter()
   const [isRead, setIsRead] = useState(false)
 
@@ -133,10 +133,12 @@ export default function Home({
       setIsRead(true)
     }
     const idCounter = setTimeout(() => {
-      Object.values(ctxHomeLinks).filter((el, i) => {
+      Object.values(ctxAppRoutes).filter((el, i) => {
         auxOffsetTop = refList[i].current!.offsetTop
         if(!isRead && router.asPath == el.href && typeof auxOffsetTop == 'number') {
           setIsRead(true)
+          el.click = false
+          setCtxAppRoutes({ ...ctxAppRoutes })
           utilHandleScroll(auxOffsetTop, false)
         }
       })
@@ -146,17 +148,16 @@ export default function Home({
   }, [router.asPath])
 
   useEffect(() => {
-    Object.values(ctxHomeLinks).filter((el, i) => {
+    Object.values(ctxAppRoutes).filter((el, i) => {
       auxOffsetTop = refList[i].current!.offsetTop
       if(isRead && el.click && typeof auxOffsetTop == 'number') {
         el.click = false
-        setCtxHomeLinks({ ...ctxHomeLinks })
+        setCtxAppRoutes({ ...ctxAppRoutes })
         utilHandleScroll(auxOffsetTop)
-        router.push(el.href)
       }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ctxHomeLinks])
+  }, [ctxAppRoutes])
 
   return <>
     <Head>

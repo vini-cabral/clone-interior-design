@@ -13,7 +13,7 @@ interface IItem extends IPackage {
 let keyList: string[] = []
 let packageList: IItem[] = []
 export default function PackagesCore({ packagesDesc }: {  packagesDesc: any }) {
-  const { ctxHomeLinks, ctxDataPackages, setCtxDataPackages } = useContext(AppContex)
+  const { ctxAppRoutes, ctxDataPackages, setCtxDataPackages } = useContext(AppContex)
   keyList = Object.keys(ctxDataPackages)
   packageList = []
   for(let key of keyList) {
@@ -28,7 +28,7 @@ export default function PackagesCore({ packagesDesc }: {  packagesDesc: any }) {
   }, [])
 
   return <>
-    <SectionTitle>{ `${ctxHomeLinks.packages.name}.` }</SectionTitle>
+    <SectionTitle>{ `${ctxAppRoutes.packages.name}.` }</SectionTitle>
     <p>{ packagesDesc && packagesDesc.description }</p>
     <div className={ styles['package-cards'] }>
       {

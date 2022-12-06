@@ -5,9 +5,9 @@ import { AppContex } from "src/context"
 import Form from "./Form"
 
 export default function ContactCore({ contactDesc }: { contactDesc: any }) {
-  const { ctxHomeLinks } = useContext(AppContex)
+  const { ctxAppRoutes } = useContext(AppContex)
   return <>
-    <SectionTitle>{ `${ctxHomeLinks.contact.name}.` }</SectionTitle>
+    <SectionTitle>{ `${ctxAppRoutes.contact.name}.` }</SectionTitle>
     <p>{ contactDesc && contactDesc.description }</p>
     <Form />
   </>
