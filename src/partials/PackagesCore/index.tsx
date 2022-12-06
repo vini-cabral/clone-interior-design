@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { SectionTitle } from "src/components"
 import { AppContex } from "src/context"
 import { IDataPackages, IPackage } from "src/interfaces"
-import { clientGetDataPackage } from "src/services"
+import { serviceGetDataPackage } from "src/services"
 import styles from "./styles.module.sass"
 
 interface IItem extends IPackage {
@@ -21,7 +21,7 @@ export default function PackagesCore({ packagesDesc }: {  packagesDesc: any }) {
   }
 
   useEffect(() => {
-    clientGetDataPackage()
+    serviceGetDataPackage()
     .then(res => setCtxDataPackages(res))
     .catch(err => {})
     // eslint-disable-next-line react-hooks/exhaustive-deps

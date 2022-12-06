@@ -8,9 +8,9 @@ function handlerResponseParse(res: Response) {
   }
 }
 
-async function clientGetDataPackage(): Promise<IDataPackages> {
+async function serviceGetDataPackage(): Promise<IDataPackages> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/packages`)
   return handlerResponseParse(res)
 }
 
-export default clientGetDataPackage
+export default serviceGetDataPackage

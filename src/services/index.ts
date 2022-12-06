@@ -1,5 +1,5 @@
-import clientGetDataPackage from "./client"
+import serviceGetDataPackage from "./dataPackages"
 
 export {
-  clientGetDataPackage
+  serviceGetDataPackage
 }
