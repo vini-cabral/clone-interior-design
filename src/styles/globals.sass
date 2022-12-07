@@ -1,19 +1,23 @@
 @use './settings/sass/_variables' as var
 
 :root
-  --font-size-std: 1.8rem
+  --font-size-std: 1.2rem
   --gutter: 1rem
 @media(min-width: var.$bkpt-xsm)
   :root
+    --font-size-std: 1.4rem
     --gutter: 1.5rem
 @media(min-width: var.$bkpt-sm)
   :root
+    --font-size-std: 1.6rem
     --gutter: 2rem
 @media(min-width: var.$bkpt-md)
   :root
+    --font-size-std: 1.8rem
     --gutter: 2.5rem
 @media(min-width: var.$bkpt-lg)
   :root
+    --font-size-std: 2rem
     --gutter: 3rem
 
 *
@@ -70,9 +74,9 @@ p, a, q, cite, blockquote, input, textarea, button, strong, em
   margin: calc(.5*var.$offset) 0
 
 strong, em
-  font-weight: 600
+  font-weight: bold
   color: var.$color-02
-  filter: grayscale(70%)
+  filter: grayscale(20%)
 
 em
   font-style: italic

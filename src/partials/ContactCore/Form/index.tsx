@@ -93,7 +93,7 @@ export default function Form() {
     <label className={ styles[isWrongEmail ? 'field--error' : ''] }>
       { isWrongEmail ? <span>O campo <span>email</span> é obrigatório (Utilize um endereço válido)</span> : "Email" }
       <input
-        type="email"
+        type="text"
         id="name"
         placeholder="cliente@email.com"
         title="E-mail"
