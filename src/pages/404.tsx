@@ -1,3 +1,4 @@
+import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { useContext } from "react"
 // My App
@@ -5,6 +6,7 @@ import { AppContex } from "src/context"
 
 export default function Custom404() {
   const { setCtxLayout } = useContext(AppContex)
+  const router = useRouter()
 
   useEffect(() => {
     setCtxLayout('error')
@@ -12,7 +14,7 @@ export default function Custom404() {
   }, [])
 
   return <>
-    <h2>Error 404</h2>
-    <p>Page Not Found!</p>
+    <h1>Erro - 404</h1>
+    <p>Página não encontrada.</p>
   </>
 }

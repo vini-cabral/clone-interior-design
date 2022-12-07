@@ -12,3 +12,14 @@
   textarea
     resize: none
     height: 12rem
+  .field--error
+    span>span
+      font-weight: bold
+    input, textarea
+      border: 2px solid var.$color-error-01
+      border-radius: .2rem
+      background-color: var.$color-error-02
+    input::placeholder, textarea::placeholder
+      color: var.$color-error-01
+    *
+      color: var.$color-error-01

@@ -1,6 +1,6 @@
 import { TLink } from "src/types";
 
-export default interface IAppRoutes {
+export default interface IHomePageRoutes {
   home: TLink,
   showcase: TLink,
   services: TLink,

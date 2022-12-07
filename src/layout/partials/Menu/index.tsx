@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import { IoMenuSharp, IoArrowBackSharp } from "react-icons/io5"
 // My App
 import { AppContex } from "src/context"
-import { IAppRoutes } from "src/interfaces"
+import { IHomePageRoutes } from "src/interfaces"
 import { TLink } from "src/types"
 import styles from "./styles.module.sass"
 
@@ -30,9 +30,9 @@ let routeList: IItem[] = []
 export default function Menu() {
   const [isClosed, setIsClosed] = useState(true)
   const [cssStyleName, setCssStyleName] = useState(`${ styles['menu'] }`)
-  const { ctxAppRoutes, setCtxAppRoutes } = useContext(AppContex)
-  keyList = Object.keys(ctxAppRoutes)
-  routeList = Object.values(ctxAppRoutes).map((el, i) => { 
+  const { ctxHomePageRoutes, setCtxHomePageRoutes } = useContext(AppContex)
+  keyList = Object.keys(ctxHomePageRoutes)
+  routeList = Object.values(ctxHomePageRoutes).map((el, i) => { 
     return { ... el, key: keyList[i] }
   })
   const router = useRouter()
@@ -55,8 +55,8 @@ export default function Menu() {
             key={ el.key }
             onClick = { () => {
               handleCssStyleName(false, setIsClosed, setCssStyleName)
-              ctxAppRoutes[el.key as keyof IAppRoutes].click = true
-              setCtxAppRoutes({ ...ctxAppRoutes })
+              ctxHomePageRoutes[el.key as keyof IHomePageRoutes].click = true
+              setCtxHomePageRoutes({ ...ctxHomePageRoutes })
               router.push(el.href)
             }}
           >

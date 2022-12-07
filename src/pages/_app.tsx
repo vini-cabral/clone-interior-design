@@ -4,16 +4,17 @@ import { useState } from 'react'
 import 'src/styles/settings/css/reset.css'
 import 'src/styles/globals.sass'
 import Layout, { LayoutError } from 'src/layout'
-import { AppContex, initDataPackages, initAppRoutes } from 'src/context'
+import { AppContex, initDataPackages, initHomePageRoutes } from 'src/context'
 import { IProject } from 'src/interfaces'
 import { TLayout } from 'src/types'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery] = useState(-1)
   const [ctxAssetsPhotoGallery, setCtxAssetsPhotoGallery] = useState<IProject[] | null>(null)
-  const [ctxAppRoutes, setCtxAppRoutes] = useState(initAppRoutes)
+  const [ctxHomePageRoutes, setCtxHomePageRoutes] = useState(initHomePageRoutes)
   const [ctxLayout,setCtxLayout] = useState<TLayout>('std')
   const [ctxDataPackages, setCtxDataPackages] = useState(initDataPackages)
+  const [ctxContactFeedback, setCtxContactFeedback] = useState(null)
 
   return <AppContex.Provider value={
     {
@@ -21,9 +22,10 @@ export default function App({ Component, pageProps }: AppProps) {
       setCtxIndexClickPhotoGallery,
       ctxAssetsPhotoGallery,
       setCtxAssetsPhotoGallery,
-      ctxAppRoutes, setCtxAppRoutes,
+      ctxHomePageRoutes, setCtxHomePageRoutes,
       ctxLayout, setCtxLayout,
-      ctxDataPackages, setCtxDataPackages
+      ctxDataPackages, setCtxDataPackages,
+      ctxContactFeedback, setCtxContactFeedback
     }
   }>
     {

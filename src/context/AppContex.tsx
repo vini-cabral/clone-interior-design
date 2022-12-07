@@ -2,7 +2,7 @@ import { createContext } from "react"
 // My App
 import { IAppContex, IDataPackages } from "src/interfaces"
 
-export const initAppRoutes = {
+export const initHomePageRoutes = {
   home: {
     name: 'Home',
     href: '/#home',
@@ -61,10 +61,12 @@ export const AppContex = createContext<IAppContex>({
   setCtxIndexClickPhotoGallery: () => {},
   ctxAssetsPhotoGallery: null,
   setCtxAssetsPhotoGallery: () => {},
-  ctxAppRoutes: initAppRoutes,
-  setCtxAppRoutes: () => {},
+  ctxHomePageRoutes: initHomePageRoutes,
+  setCtxHomePageRoutes: () => {},
   ctxLayout: 'std',
   setCtxLayout: () => {},
   ctxDataPackages: initDataPackages,
   setCtxDataPackages: () => {},
+  ctxContactFeedback: null,
+  setCtxContactFeedback: () => {}
 })

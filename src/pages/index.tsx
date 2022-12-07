@@ -116,7 +116,7 @@ export default function Home({
   const objRef5 = useRef<HTMLInputElement>(null)
   const objRef6 = useRef<HTMLInputElement>(null)
   const refList = [objRef1, objRef2, objRef3, objRef4, objRef5, objRef6]
-  const { ctxAppRoutes, setCtxAppRoutes, setCtxLayout } = useContext(AppContex)
+  const { ctxHomePageRoutes, setCtxHomePageRoutes, setCtxLayout } = useContext(AppContex)
   const router = useRouter()
   const [isRead, setIsRead] = useState(false)
 
@@ -133,12 +133,12 @@ export default function Home({
       setIsRead(true)
     }
     const idCounter = setTimeout(() => {
-      Object.values(ctxAppRoutes).filter((el, i) => {
+      Object.values(ctxHomePageRoutes).filter((el, i) => {
         auxOffsetTop = refList[i].current!.offsetTop
         if(!isRead && router.asPath == el.href && typeof auxOffsetTop == 'number') {
           setIsRead(true)
           el.click = false
-          setCtxAppRoutes({ ...ctxAppRoutes })
+          setCtxHomePageRoutes({ ...ctxHomePageRoutes })
           utilHandleScroll(auxOffsetTop, false)
         }
       })
@@ -148,16 +148,16 @@ export default function Home({
   }, [router.asPath])
 
   useEffect(() => {
-    Object.values(ctxAppRoutes).filter((el, i) => {
+    Object.values(ctxHomePageRoutes).filter((el, i) => {
       auxOffsetTop = refList[i].current!.offsetTop
       if(isRead && el.click && typeof auxOffsetTop == 'number') {
         el.click = false
-        setCtxAppRoutes({ ...ctxAppRoutes })
+        setCtxHomePageRoutes({ ...ctxHomePageRoutes })
         utilHandleScroll(auxOffsetTop)
       }
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ctxAppRoutes])
+  }, [ctxHomePageRoutes])
 
   return <>
     <Head>

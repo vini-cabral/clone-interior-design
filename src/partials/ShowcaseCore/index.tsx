@@ -7,7 +7,7 @@ import { IProject } from "src/interfaces"
 import styles from "./styles.module.sass"
 
 export default function ShowcaseCore({ showcase }:{ showcase: IProject[] | null }) {
-  const { ctxAppRoutes, ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, setCtxAssetsPhotoGallery } = useContext(AppContex)
+  const { ctxHomePageRoutes, ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, setCtxAssetsPhotoGallery } = useContext(AppContex)
 
   useEffect(() => {
     showcase && ctxIndexClickPhotoGallery >= 0 && setCtxAssetsPhotoGallery([...showcase])
@@ -15,7 +15,7 @@ export default function ShowcaseCore({ showcase }:{ showcase: IProject[] | null 
   }, [ctxIndexClickPhotoGallery])
 
   return <>
-    <SectionTitle>{ `${ctxAppRoutes.showcase.name}.` }</SectionTitle>
+    <SectionTitle>{ `${ctxHomePageRoutes.showcase.name}.` }</SectionTitle>
     <div className={ styles['showcase'] }>
       {
         Array.isArray(showcase) && showcase.map((el, i) => <div
