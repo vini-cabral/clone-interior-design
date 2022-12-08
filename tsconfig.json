@@ -4,6 +4,7 @@
     "paths": {
       "src/components/*": ["components/*"],
       "src/context/*": ["context/*"],
+      "src/env/*": ["env/*"],
       "src/interfaces/*": ["interfaces/*"],
       "src/layout/*": ["layout/*"],
       "src/lib/*": ["lib/*"],
