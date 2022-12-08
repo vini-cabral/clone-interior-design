@@ -7,7 +7,7 @@ Before running the project on your machine perform the following steps [Manual i
 ## Etapa 1 - Sanity Studio
 Configure o Sanity Studio localmente, confira os links:
 * [Repo](https://github.com/vini-cabral/clone-interior-design-sanity)
-* [Setup](https://github.com/vini-cabral/clone-interior-design-sanity#fluxo-de-instala%C3%A7%C3%A3ouso-do-sanity-studio)
+* [Setup](https://github.com/vini-cabral/clone-interior-design-sanity#fluxo-de-instala%C3%A7%C3%A3ouso-do-sanity-studio-sanity-studio-v2)
 
 __NOTA:__ Você será redirecionado para o Repositório com recursos para serem utilizados durante a criação do Projeto __(Headless CMS - Sanity)__ em sua máquina, portanto deverá ser clonado também.
 
@@ -24,7 +24,7 @@ Before running the project on your machine perform the following steps.
 ## Step 1 - Sanity Studio
 Set up Sanity Studio locally, check out the links:
 * [Repo](https://github.com/vini-cabral/clone-interior-design-sanity)
-* [Setup](https://github.com/vini-cabral/clone-interior-design-sanity#sanity-studio-installation-and-use-manual)
+* [Setup](https://github.com/vini-cabral/clone-interior-design-sanity#sanity-studio-installation-and-use-manual-sanity-studio-v2)
 
 __NOTE:__ You will be redirected to the Repository with resources to be used while creating the Project (Headless CMS - Sanity) on your machine, so it should be cloned as well.
 
