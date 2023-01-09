@@ -2,7 +2,7 @@ import { NextRouter, useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 // My App
 import styles from "./styles.module.sass"
-import { AppContex } from "src/context"
+import { AppContext } from "src/context"
 
 function handleSendMessage(
   evt: React.FormEvent<HTMLFormElement>,
@@ -59,7 +59,7 @@ export default function Form() {
   const [isWrongName, setIsWrongName] = useState(false)
   const [isWrongEmail, setIsWrongEmail] = useState(false)
   const [isWrongMessage, setIsWrongMessage] = useState(false)
-  const { setCtxContactFeedback, ctxHomePageRoutes, setCtxHomePageRoutes } = useContext(AppContex)
+  const { setCtxContactFeedback } = useContext(AppContext)
   const router = useRouter()
 
   useEffect(() => {

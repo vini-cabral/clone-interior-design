@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { sanityConfig, sanityUrlFor } from 'src/lib'
 import { Title, ShowcaseCore, ServicesCore, DesignersCore, PackagesCore, ContactCore } from 'src/partials'
 import { IProject, ITeammate } from 'src/interfaces'
-import { AppContex } from 'src/context'
+import { AppContext } from 'src/context'
 import { utilHandleScroll } from 'src/utils'
 
 // Sanity Data Fetching
@@ -115,7 +115,7 @@ export default function Home({
   const objRef5 = useRef<HTMLInputElement>(null)
   const objRef6 = useRef<HTMLInputElement>(null)
   const refList = [objRef1, objRef2, objRef3, objRef4, objRef5, objRef6]
-  const { ctxHomePageRoutes, setCtxHomePageRoutes, setCtxLayout } = useContext(AppContex)
+  const { ctxHomePageRoutes, setCtxHomePageRoutes, setCtxLayout } = useContext(AppContext)
   const router = useRouter()
   const [isRead, setIsRead] = useState(false)
 

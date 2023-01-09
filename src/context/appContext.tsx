@@ -1,6 +1,6 @@
 import { createContext } from "react"
 // My App
-import { IAppContex, IDataPackages } from "src/interfaces"
+import { IAppContext, IDataPackages } from "src/interfaces"
 
 export const initHomePageRoutes = {
   home: {
@@ -56,7 +56,7 @@ export const initDataPackages: IDataPackages = {
   }
 }
 
-export const AppContex = createContext<IAppContex>({
+export const AppContext = createContext<IAppContext>({
   ctxIndexClickPhotoGallery: -1,
   setCtxIndexClickPhotoGallery: () => {},
   ctxAssetsPhotoGallery: null,

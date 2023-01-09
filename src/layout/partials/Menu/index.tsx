@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { useContext, useState } from "react"
 import { IoMenuSharp, IoArrowBackSharp } from "react-icons/io5"
 // My App
-import { AppContex } from "src/context"
+import { AppContext } from "src/context"
 import { IHomePageRoutes } from "src/interfaces"
 import { TLink } from "src/types"
 import styles from "./styles.module.sass"
@@ -30,7 +30,7 @@ let routeList: IItem[] = []
 export default function Menu() {
   const [isClosed, setIsClosed] = useState(true)
   const [cssStyleName, setCssStyleName] = useState(`${ styles['menu'] }`)
-  const { ctxHomePageRoutes, setCtxHomePageRoutes } = useContext(AppContex)
+  const { ctxHomePageRoutes, setCtxHomePageRoutes } = useContext(AppContext)
   keyList = Object.keys(ctxHomePageRoutes)
   routeList = Object.values(ctxHomePageRoutes).map((el, i) => { 
     return { ... el, key: keyList[i] }

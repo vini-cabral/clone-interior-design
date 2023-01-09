@@ -3,10 +3,10 @@ import { useContext } from 'react'
 // My App
 import styles from './styles.module.sass'
 import { Slider } from 'src/components'
-import { AppContex } from 'src/context'
+import { AppContext } from 'src/context'
 
 export default function PhotoGallery() {
-  const { ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, ctxAssetsPhotoGallery } = useContext(AppContex)
+  const { ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, ctxAssetsPhotoGallery } = useContext(AppContext)
   return <div className={ styles['photo-gallery'] }>
     {
       ctxAssetsPhotoGallery && <Slider

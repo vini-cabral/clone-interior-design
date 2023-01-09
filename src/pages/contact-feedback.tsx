@@ -2,11 +2,11 @@ import Head from 'next/head'
 import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 // My App
-import { AppContex } from "src/context"
+import { AppContext } from "src/context"
 import styles from "src/styles/contact-feedback.module.sass"
 
 export default function ContactFeedback() {
-  const { ctxContactFeedback } = useContext(AppContex)
+  const { ctxContactFeedback } = useContext(AppContext)
   const router = useRouter()
   const [title, setTitle] = useState<null | string>(null)
   const [text, setText] = useState<null | string>(null)

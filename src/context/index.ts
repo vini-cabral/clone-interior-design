@@ -1,7 +1,7 @@
-import { AppContex, initHomePageRoutes, initDataPackages } from "./AppContex"
+import { AppContext, initHomePageRoutes, initDataPackages } from "./appContext"
 
 export {
-  AppContex,
+  AppContext,
   initHomePageRoutes,
   initDataPackages
 }

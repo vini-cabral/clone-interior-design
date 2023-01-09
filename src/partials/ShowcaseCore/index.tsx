@@ -2,12 +2,12 @@ import Image from "next/image"
 import { useContext, useEffect } from "react"
 // My App
 import { SectionTitle } from "src/components"
-import { AppContex } from "src/context"
+import { AppContext } from "src/context"
 import { IProject } from "src/interfaces"
 import styles from "./styles.module.sass"
 
 export default function ShowcaseCore({ showcase }:{ showcase: IProject[] | null }) {
-  const { ctxHomePageRoutes, ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, setCtxAssetsPhotoGallery } = useContext(AppContex)
+  const { ctxHomePageRoutes, ctxIndexClickPhotoGallery, setCtxIndexClickPhotoGallery, setCtxAssetsPhotoGallery } = useContext(AppContext)
 
   useEffect(() => {
     showcase && ctxIndexClickPhotoGallery >= 0 && setCtxAssetsPhotoGallery([...showcase])

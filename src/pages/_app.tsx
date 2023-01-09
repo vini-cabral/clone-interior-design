@@ -4,7 +4,7 @@ import { useState } from 'react'
 import 'src/styles/settings/css/reset.css'
 import 'src/styles/globals.sass'
 import Layout, { LayoutError } from 'src/layout'
-import { AppContex, initDataPackages, initHomePageRoutes } from 'src/context'
+import { AppContext, initDataPackages, initHomePageRoutes } from 'src/context'
 import { IProject } from 'src/interfaces'
 import { TLayout } from 'src/types'
 
@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [ctxDataPackages, setCtxDataPackages] = useState(initDataPackages)
   const [ctxContactFeedback, setCtxContactFeedback] = useState(null)
 
-  return <AppContex.Provider value={
+  return <AppContext.Provider value={
     {
       ctxIndexClickPhotoGallery,
       setCtxIndexClickPhotoGallery,
@@ -38,5 +38,5 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </LayoutError>
     }
-  </AppContex.Provider>
+  </AppContext.Provider>
 }

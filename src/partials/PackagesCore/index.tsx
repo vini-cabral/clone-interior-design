@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 // My App
 import { SectionTitle } from "src/components"
-import { AppContex } from "src/context"
+import { AppContext } from "src/context"
 import { IDataPackages, IPackage } from "src/interfaces"
 import { serviceGetDataPackage } from "src/services"
 import styles from "./styles.module.sass"
@@ -13,7 +13,7 @@ interface IItem extends IPackage {
 let keyList: string[] = []
 let packageList: IItem[] = []
 export default function PackagesCore({ packagesDesc }: {  packagesDesc: any }) {
-  const { ctxHomePageRoutes, ctxDataPackages, setCtxDataPackages } = useContext(AppContex)
+  const { ctxHomePageRoutes, ctxDataPackages, setCtxDataPackages } = useContext(AppContext)
   keyList = Object.keys(ctxDataPackages)
   packageList = []
   for(let key of keyList) {

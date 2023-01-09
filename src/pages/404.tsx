@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { useContext } from "react"
 // My App
-import { AppContex } from "src/context"
+import { AppContext } from "src/context"
 
 export default function Custom404() {
-  const { setCtxLayout } = useContext(AppContex)
-  const router = useRouter()
+  const { setCtxLayout } = useContext(AppContext)
 
   useEffect(() => {
     setCtxLayout('error')

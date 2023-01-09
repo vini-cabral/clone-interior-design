@@ -3,12 +3,12 @@ import Image from 'next/image'
 import { useContext } from 'react'
 // My App
 import { SectionTitle } from 'src/components'
-import { AppContex } from 'src/context'
+import { AppContext } from 'src/context'
 import { ITeammate } from 'src/interfaces'
 import styles from './styles.module.sass'
 
 export default function DesignersCore({ designersDesc, team }:{ designersDesc: any, team: ITeammate[] | null }) {
-  const { ctxHomePageRoutes } = useContext(AppContex)
+  const { ctxHomePageRoutes } = useContext(AppContext)
   return <>
     <SectionTitle>{ `${ctxHomePageRoutes.designers.name}.` }</SectionTitle>
     { designersDesc && <PortableText value={ designersDesc.body }/> }
