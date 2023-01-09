@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useRouter } from "next/router"
 import { useContext, useEffect, useState } from "react"
 // My App
@@ -20,13 +21,21 @@ export default function ContactFeedback() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return <section className={ styles['feedback'] }>
-    {
-      title && text && <>
-        <h1>{ title }</h1>
-        <p>{ text }</p>
-        <button onClick={ () => router.push("/") }>Voltar à página inicial</button>
-      </>
-    }
-  </section>
+  return <>
+    <Head>
+      <title>Interior Design - Feedback</title>
+      <meta name="description" content="Feedback" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <section className={ styles['feedback'] }>
+      {
+        title && text && <>
+          <h1>{ title }</h1>
+          <p>{ text }</p>
+          <button onClick={ () => router.push("/") }>Voltar à página inicial</button>
+        </>
+      }
+    </section>
+  </>
 }
