@@ -90,8 +90,7 @@ export async function getStaticProps() {
         sanityTeam,
         sanityPackagesDesc,
         sanityContactDesc
-      },
-      revalidate: 10800, // 3h
+      }
     }
   } catch(err) {
     return { notFound: true }
