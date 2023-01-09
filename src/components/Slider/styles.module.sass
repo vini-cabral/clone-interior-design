@@ -11,11 +11,11 @@
     opacity: 1
 
 .slides
+  z-index: 0
   position: relative
   width: 100%
   overflow: hidden
   box-sizing: border-box
-  z-index: 0
   >div
     position: absolute
     display: flex
@@ -23,6 +23,7 @@
     height: 100%
     opacity: 0
     transition-duration: 500ms
+    overflow: auto
   .slide--hide
     opacity: 0
     transition-property: opacity
@@ -33,7 +34,7 @@
     transition-duration: 350ms
     transition-property: opacity
     position: absolute
-    z-index: 1
+    z-index: 1001
     right: 0
     top: 0
     width: 75px
@@ -50,6 +51,7 @@
     opacity: 1
   .btn-arrow-lt--show,.btn-arrow-lt--hide,
   .btn-arrow-rt--show,.btn-arrow-rt--hide
+    z-index: 1000
     width: 80px
     height: 100%
     position: absolute
@@ -75,6 +77,7 @@
   .btn-arrow-lt--hide:hover,.btn-arrow-rt--hide:hover
     opacity: 1
   .btn-caption--hide,.btn-caption--show
+    z-index: 1000
     transition-duration: 350ms
     transition-property: opacity
     position: absolute
@@ -89,6 +92,7 @@
     >span
       display: flex
       height: 16px
+      width: 16px
       margin: 0 8px
       cursor: pointer
   .btn-caption--hide
