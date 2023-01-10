@@ -1,4 +1,5 @@
 @use './settings/sass/_variables' as var
+@use './settings/sass/_mixins' as mix
 
 :root
   --font-size-std: 1.2rem
@@ -20,15 +21,24 @@
     --font-size-std: 2rem
     --gutter: 3rem
 
-*
-  ::-webkit-scrollbar
-    height: 5px
-    width: 8px
-  ::-webkit-scrollbar-thumb
-    background: var.$color-02
-    border-radius: 10px
-  ::-webkit-scrollbar-track
-    background: var.$color-03
+#__app-content,#__app-modal
+  position: relative
+  z-index: 0
+  top: 0
+  left: 0
+  width: 100%
+  background-color: var.$color-light
+
+#__app-content
+  // @include mix.show-fade()
+  >*
+    @include mix.show-fade()
+
+#__app-modal
+  position: fixed
+  z-index: 1
+  background-color: rgba(0, 0, 0, .95)
+  height: 100vh
 
 html
   font-size: 62.5%

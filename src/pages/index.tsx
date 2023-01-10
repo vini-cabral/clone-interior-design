@@ -120,7 +120,7 @@ export default function Home({
   const [isRead, setIsRead] = useState(false)
 
   useEffect(() => {
-    setCtxLayout('std')
+    setCtxLayout('main')
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -131,18 +131,15 @@ export default function Home({
     if(!isRead && router.asPath == '/') {
       setIsRead(true)
     }
-    const idCounter = setTimeout(() => {
-      Object.values(ctxHomePageRoutes).filter((el, i) => {
-        auxOffsetTop = refList[i].current!.offsetTop
-        if(!isRead && router.asPath == el.href && typeof auxOffsetTop == 'number') {
-          setIsRead(true)
-          el.click = false
-          setCtxHomePageRoutes({ ...ctxHomePageRoutes })
-          utilHandleScroll(auxOffsetTop, false)
-        }
-      })
-    }, 300)
-    return () => clearTimeout(idCounter)
+    Object.values(ctxHomePageRoutes).filter((el, i) => {
+      auxOffsetTop = refList[i].current!.offsetTop
+      if(!isRead && router.asPath == el.href && typeof auxOffsetTop == 'number') {
+        setIsRead(true)
+        el.click = false
+        setCtxHomePageRoutes({ ...ctxHomePageRoutes })
+        utilHandleScroll(auxOffsetTop, false)
+      }
+    })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.asPath])
 

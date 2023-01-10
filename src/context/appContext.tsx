@@ -63,7 +63,7 @@ export const AppContext = createContext<IAppContext>({
   setCtxAssetsPhotoGallery: () => {},
   ctxHomePageRoutes: initHomePageRoutes,
   setCtxHomePageRoutes: () => {},
-  ctxLayout: 'std',
+  ctxLayout: 'main',
   setCtxLayout: () => {},
   ctxDataPackages: initDataPackages,
   setCtxDataPackages: () => {},

@@ -6,10 +6,15 @@ import { AppContext } from "src/context"
 import styles from "src/styles/contact-feedback.module.sass"
 
 export default function ContactFeedback() {
-  const { ctxContactFeedback } = useContext(AppContext)
+  const { ctxContactFeedback, setCtxLayout } = useContext(AppContext)
   const router = useRouter()
   const [title, setTitle] = useState<null | string>(null)
   const [text, setText] = useState<null | string>(null)
+
+  useEffect(() => {
+    setCtxLayout('main')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     if(!ctxContactFeedback) {

@@ -1,4 +1,4 @@
-type TLayout = 'std' | 'error'
+type TLayout = 'main' | null
 
 type TLink = {
   name: string,
