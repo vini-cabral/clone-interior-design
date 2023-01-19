@@ -25,7 +25,9 @@ function handleSendMessage(
     return setIsWrongName(true)
   }
 
-  if(email.search('@') < 0 || email.length < 3) {
+  if(email.length <=3 || !email.search('@') || email.includes('@.')) {
+    return setIsWrongEmail(true)
+  } else if(!email.substring(email.indexOf('@')+2).split("").find(el => el === ".")) {
     return setIsWrongEmail(true)
   }
 
@@ -52,7 +54,7 @@ function handleSendMessage(
   })
 }
 
-export default function Form() {
+export default function ContactForm() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
@@ -73,7 +75,7 @@ export default function Form() {
   }, [])
 
   return <form
-      className={ styles['form'] }
+      className={ styles['contact-form'] }
       onSubmit={ evt => handleSendMessage(
         evt, name, email, message, setIsWrongName, setIsWrongEmail, setIsWrongMessage, setCtxContactFeedback, router
       ) }
