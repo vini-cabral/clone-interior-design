@@ -1,6 +1,6 @@
 import IImage from "./image"
 
-export default interface ITeammate {
+export default interface IDesigner {
   id: string
   createdAt: string
   name: string,

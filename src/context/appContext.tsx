@@ -1,6 +1,6 @@
 import { createContext } from "react"
 // My App
-import { IAppContext, IDataPackages } from "src/interfaces"
+import { IAppContext } from "src/interfaces"
 
 export const initHomePageRoutes = {
   home: {
@@ -35,27 +35,6 @@ export const initHomePageRoutes = {
   }
 }
 
-export const initDataPackages: IDataPackages = {
-  basic: {
-    title: null,
-    type: null,
-    supportTime: null,
-    auxService: null,
-    discount: null,
-    message: null,
-    price: null,
-  },
-  premium: {
-    title: null,
-    type: null,
-    supportTime: null,
-    auxService: null,
-    discount: null,
-    message: null,
-    price: null,
-  }
-}
-
 export const AppContext = createContext<IAppContext>({
   ctxIndexClickPhotoGallery: -1,
   setCtxIndexClickPhotoGallery: () => {},
@@ -65,8 +44,6 @@ export const AppContext = createContext<IAppContext>({
   setCtxHomePageRoutes: () => {},
   ctxLayout: 'main',
   setCtxLayout: () => {},
-  ctxDataPackages: initDataPackages,
-  setCtxDataPackages: () => {},
   ctxContactFeedback: null,
   setCtxContactFeedback: () => {}
 })

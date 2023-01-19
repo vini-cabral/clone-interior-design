@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 // My App
 import { sanityConfig, sanityUrlFor } from 'src/lib'
 import { Title, ShowcaseCore, ServicesCore, DesignersCore, PackagesCore, ContactCore } from 'src/partials'
-import { IProject, ITeammate } from 'src/interfaces'
+import { IProject, IDesigner, IPackage } from 'src/interfaces'
 import { AppContext } from 'src/context'
 import { utilHandleScroll } from 'src/utils'
 
@@ -14,44 +14,45 @@ const client = createClient(sanityConfig)
 export async function getStaticProps() {
   try {
     let error: Error | null = null
-    let sanityShowcase: IProject[] = []
-    let sanityServicesDesc: any | null = null
-    let sanityDesignersDesc: any | null = null
-    let sanityTeam: ITeammate[] = []
-    let sanityPackagesDesc: any | null = null
-    let sanityContactDesc: any | null = null
+    let sanity01Showcase: IProject[] = []
+    let sanity02Services: any | null = null
+    let sanity03DesignersPart1: any | null = null
+    let sanity03DesignersPart2: IDesigner[] = []
+    let sanity04PackagePart1: any | null = null
+    let sanity04PackagePart2: IPackage[] = []
+    let sanity05Contact: any | null = null
 
     await Promise.all([
-      client.fetch(`*[_type == "showcase"] | order(_createdAt asc)`),
-      client.fetch(`*[_type == "services"][0]`),
-      client.fetch(`*[_type == "designers"][0]`),
-      client.fetch(`*[_type == "teammate"] | order(_createdAt asc)`),
-      client.fetch(`*[_type == "package"][0]`),
-      client.fetch(`*[_type == "contact"][0]`),
+      client.fetch(`*[_type == "section01Showcase"] | order(_createdAt asc)`),
+      client.fetch(`*[_type == "section02Services"][0]`),
+      client.fetch(`*[_type == "section03DesignersPart1"][0]`),
+      client.fetch(`*[_type == "section03DesignersPart2"] | order(_createdAt asc)`),
+      client.fetch(`*[_type == "section04PackagePart1"][0]`),
+      client.fetch(`*[_type == "section04PackagePart2"] | order(_createdAt asc)`),
+      client.fetch(`*[_type == "section05Contact"][0]`),
     ])
-    .then(([dataShowcase, dataServices, dataDesigners, dataTeam, dataPackagesDesc, dataContactDesc]) => {
-      // Showcae
-      sanityShowcase = dataShowcase.map((el: any) => {
+    .then(([data01Showcase, data02Services, data03DesignersPart1, data03DesignersPart2, data04PackagePart1, data04PackagePart2, data05Contact]) => {
+      // Section 01 - Showcase
+      sanity01Showcase = data01Showcase.map((el: any) => {
         return {
           createdAt: el._createdAt,
           id: el._id,
-          title: el.title,
+          title: el.project,
           thumbnail: {
             src: sanityUrlFor(el.thumbnail).url(),
-            alt: el.thumbnail.caption
+            alt: el.thumbnail.attribution
           },
           large: {
             src: sanityUrlFor(el.large).url(),
-            alt: el.large.caption
+            alt: el.large.attribution
           }
         }
       })
-      // Services
-      sanityServicesDesc = dataServices
-      // Designers
-      sanityDesignersDesc = dataDesigners
-      // Team
-      sanityTeam = dataTeam.map((el: any) => {
+      // Section 02 - Services
+      sanity02Services = data02Services
+      // Section 03 - Designers
+      sanity03DesignersPart1 = data03DesignersPart1
+      sanity03DesignersPart2 = data03DesignersPart2.map((el: any) => {
         return {
           createdAt: el._createdAt,
           id: el._id,
@@ -60,36 +61,39 @@ export async function getStaticProps() {
           description: el.description,
           image: {
             src: sanityUrlFor(el.image).url(),
-            alt: el.image.caption
+            alt: el.image.attribution
           }
         }
       })
-      // Packages
-      sanityPackagesDesc = dataPackagesDesc
-      // Contact
-      sanityContactDesc = dataContactDesc
+      // Section 04 - Packages
+      sanity04PackagePart1 = data04PackagePart1
+      sanity04PackagePart2 = data04PackagePart2.map((el: any) => ({ ...el, id: el._id }) )
+      // Section 05 - Contact
+      sanity05Contact = data05Contact
     })
     .catch(err => error = err)
 
     if(
       error !== null
-      || sanityShowcase.length == 0
-      || sanityServicesDesc === null
-      || sanityDesignersDesc === null
-      || sanityTeam.length == 0
-      || sanityPackagesDesc === null
-      || sanityContactDesc === null
+      || sanity01Showcase.length == 0
+      || sanity02Services === null
+      || sanity03DesignersPart1 === null
+      || sanity03DesignersPart2.length == 0
+      || sanity04PackagePart1 === null
+      || sanity04PackagePart2.length == 0
+      || sanity05Contact === null
     ) {
       return { notFound: true }
     }
     return {
       props: {
-        sanityShowcase,
-        sanityServicesDesc,
-        sanityDesignersDesc,
-        sanityTeam,
-        sanityPackagesDesc,
-        sanityContactDesc
+        sanity01Showcase,
+        sanity02Services,
+        sanity03DesignersPart1,
+        sanity03DesignersPart2,
+        sanity04PackagePart1,
+        sanity04PackagePart2,
+        sanity05Contact
       }
     }
   } catch(err) {
@@ -98,15 +102,22 @@ export async function getStaticProps() {
 }
 
 let auxOffsetTop = 0
-export default function Home({ 
-  sanityShowcase, sanityServicesDesc, sanityDesignersDesc, sanityTeam, sanityPackagesDesc, sanityContactDesc
+export default function Home({
+  sanity01Showcase,
+  sanity02Services,
+  sanity03DesignersPart1,
+  sanity03DesignersPart2,
+  sanity04PackagePart1,
+  sanity04PackagePart2,
+  sanity05Contact
 }:{
-  sanityShowcase: IProject[],
-  sanityServicesDesc: any | null,
-  sanityDesignersDesc: any | null,
-  sanityTeam: ITeammate[],
-  sanityPackagesDesc: any | null,
-  sanityContactDesc: any | null
+  sanity01Showcase: IProject[]
+  sanity02Services: any | null
+  sanity03DesignersPart1: any | null
+  sanity03DesignersPart2: IDesigner[]
+  sanity04PackagePart1: any | null
+  sanity04PackagePart2: IPackage[]
+  sanity05Contact: any | null
 }) {
   const objRef1 = useRef<HTMLInputElement>(null)
   const objRef2 = useRef<HTMLInputElement>(null)
@@ -166,19 +177,19 @@ export default function Home({
       <Title />
     </div>
     <section ref={ objRef2 }>
-      <ShowcaseCore showcase={ sanityShowcase } />
+      <ShowcaseCore showcase={ sanity01Showcase } />
     </section>
     <section  ref={ objRef3 }>
-      <ServicesCore servicesDesc={ sanityServicesDesc } />
+      <ServicesCore services={ sanity02Services } />
     </section>
     <section ref={ objRef4 }>
-      <DesignersCore designersDesc={ sanityDesignersDesc } team={ sanityTeam } />
+      <DesignersCore designersPart1={ sanity03DesignersPart1 } designersPart2={ sanity03DesignersPart2 } />
     </section>
     <section ref={ objRef5 }>
-      <PackagesCore packagesDesc={ sanityPackagesDesc } />
+      <PackagesCore packagePart1={ sanity04PackagePart1 } packagePart2={ sanity04PackagePart2 } />
     </section>
     <section ref={ objRef6 }>
-      <ContactCore contactDesc={ sanityContactDesc } />
+      <ContactCore contactDesc={ sanity05Contact } />
     </section>
   </>
 }

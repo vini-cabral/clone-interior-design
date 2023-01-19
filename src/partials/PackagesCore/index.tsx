@@ -1,53 +1,40 @@
-import { useContext, useEffect } from "react"
+import { useRouter } from "next/router"
+import { useContext } from "react"
 // My App
 import { SectionTitle } from "src/components"
 import { AppContext } from "src/context"
-import { IDataPackages, IPackage } from "src/interfaces"
-import { serviceGetDataPackage } from "src/services"
+import { IPackage } from "src/interfaces"
 import styles from "./styles.module.sass"
 
-interface IItem extends IPackage {
-  key: string
-}
 
-let keyList: string[] = []
-let packageList: IItem[] = []
-export default function PackagesCore({ packagesDesc }: {  packagesDesc: any }) {
-  const { ctxHomePageRoutes, ctxDataPackages, setCtxDataPackages } = useContext(AppContext)
-  keyList = Object.keys(ctxDataPackages)
-  packageList = []
-  for(let key of keyList) {
-    packageList.push({ ...ctxDataPackages[key as keyof IDataPackages], key })
-  }
-
-  useEffect(() => {
-    serviceGetDataPackage()
-    .then(res => setCtxDataPackages(res))
-    .catch(err => {})
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+export default function PackagesCore({ packagePart1, packagePart2 }: {  packagePart1: any, packagePart2: IPackage[] }) {
+  const { ctxHomePageRoutes, setCtxHomePageRoutes } = useContext(AppContext)
+  const router = useRouter()
 
   return <>
     <SectionTitle>{ `${ctxHomePageRoutes.packages.name}.` }</SectionTitle>
-    <p>{ packagesDesc && packagesDesc.description }</p>
+    <p>{ packagePart1 && packagePart1.description }</p>
     <div className={ styles['package-cards'] }>
       {
-        packageList.map((el, i) => <div key={ el.key } className={ styles[ i%2 == 0 ? 'package-card-0' : 'package-card-1' ] }>
-          <h4>{ el.title ? el.title : 'Indisponível!' }</h4>
+        packagePart2.map((el:IPackage, i) => <div key={ el.id } className={ styles[ i%2 == 0 ? 'package-card-0' : 'package-card-1' ] }>
+          <h4>{ el.package }</h4>
           <ul>
-            <li>{ el.type ? el.type : 'Indisponível!' }</li>
-            <li>{ el.supportTime ? `${el.supportTime}h de suporte` : 'Indisponível!' }</li>
-            <li>{ el.auxService ? el.auxService : 'Indisponível!' }</li>
-            <li>{ el.discount ? `${el.discount}% de desconte em móveis` : 'Indisponível' }</li>
-            <li>{ el.message ? el.message : 'Indisponível!' }</li>
-            <li className={styles['price']}>{ el.price ?
-              <>
-                <span>{`R$ ${el.price.toFixed(2).replace(".", ",")}`}</span>
-                <span>por quarto</span>
-              </>
-              :'Indisponível!'
-            }</li>
-            <li><button>Contratar</button></li>
+            <li>{ el.type }</li>
+            <li>{ el.supportTime > 1 ? `${el.supportTime} Horas` : `${el.supportTime} Hora` }</li>
+            <li>{ el.auxService }</li>
+            { el.discount > 0 && <li>{ `Desconto de ${el.discount}%` }</li>}
+            <li>{ el.message }</li>
+            <li className={styles['price']}>
+              <span>{`R$ ${el.price.toFixed(2).replace(".", ",")}`}</span>
+              <span>por quarto</span>
+            </li>
+            <li>
+              <button onClick={ () => {
+                  ctxHomePageRoutes['contact'].click = true
+                  setCtxHomePageRoutes({ ...ctxHomePageRoutes })
+                  router.push(ctxHomePageRoutes['contact'].href)
+                } 
+              }>Contratar</button></li>
           </ul>
         </div>)
       }
